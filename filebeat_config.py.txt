@@ -1,0 +1,21 @@
+filebeat_config = """
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /path/to/your/logs/*.log
+output.elasticsearch:
+  hosts: ["localhost:9200"]
+"""
+
+def configure_log_shipping(data_source):
+    # Placeholder for log shipping configuration logic
+    print(f"Configuring log shipping for {data_source}")
+
+def ingest_logs(data_sources):
+    for data_source in data_sources:
+        configure_log_shipping(data_source)
+
+if __name__ == "__main__":
+    data_sources = ["/var/log/syslog", "/var/log/auth.log"]
+    ingest_logs(data_sources)

@@ -1,0 +1,29 @@
+alert_config = {
+    "trigger": {
+        "schedule": {"interval": "1m"}
+    },
+    "input": {
+        "search": {
+            "request": {
+                "indices": ["index-*"],
+                "body": {
+                    "query": {
+                        "match": {"status": "error"}
+                    }
+                }
+            }
+        }
+    },
+    "actions": {
+        "email_notification": {
+            "email": {
+                "to": "Akash@Akash.com",
+                "subject": "Error detected in logs",
+                "body": "An error was detected in the logs. Check Kibana for details."
+            }
+        }
+    }
+}
+
+if __name__ == "__main__":
+    print("Alert configuration loaded.")

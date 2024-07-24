@@ -1,0 +1,13 @@
+import os
+
+def setup_elasticsearch():
+    # Update and install Docker
+    os.system("sudo apt update")
+    os.system("sudo apt install -y docker.io")
+
+    # Pull and run Elasticsearch Docker container
+    os.system("docker pull docker.elastic.co/elasticsearch/elasticsearch:7.16.7")
+    os.system("docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e 'discovery.type=single-node' docker.elastic.co/elasticsearch/elasticsearch:7.16.7")
+
+if __name__ == "__main__":
+    setup_elasticsearch()

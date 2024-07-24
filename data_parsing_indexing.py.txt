@@ -1,0 +1,30 @@
+def parse(log):
+    # Placeholder for log parsing logic
+    return {"parsed_log": log}
+
+def index(parsed_log):
+    # Placeholder for indexing logic
+    print(f"Indexing log: {parsed_log}")
+
+def parse_and_index(logs):
+    for log in logs:
+        parsed_log = parse(log)
+        index(parsed_log)
+
+if __name__ == "__main__":
+    logs = ["log1", "log2", "log3"]
+    parse_and_index(logs)
+
+# Input beats port
+input_beats_port = 5044
+
+# Define filters to parse logs
+filter_config = """
+filter
+output {
+  elasticsearch {
+    hosts => ["localhost:9200"]
+    index => "your_index-%{+YYYY.MM.dd}"
+  }
+}
+"""
